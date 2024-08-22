@@ -29,6 +29,11 @@ variable "instance_type" {
 }
 
 variable "user-data" {
-  type = string
+  type        = string
   description = "User Data"
+}
+
+variable "iam_role_name" {
+  type = string
+  description = "Name of the IAM Role"
 }

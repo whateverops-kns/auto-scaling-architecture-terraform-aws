@@ -16,6 +16,10 @@ resource "aws_launch_template" "this" {
 
   update_default_version = true
 
+  iam_instance_profile {
+    name = var.iam_role_name
+  }
+
   block_device_mappings {
     device_name = "/dev/sdf"
 

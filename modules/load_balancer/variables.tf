@@ -19,6 +19,6 @@ variable "load_balancer_subnet_ids" {
 }
 
 variable "target_group_arn" {
-  type = string
+  type        = string
   description = "ARN of Target Group"
 }

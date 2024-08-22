@@ -22,6 +22,12 @@ module "security" {
   vpc_id                  = module.vpc.vpc_id
 }
 
+module "iam" {
+  source              = "./modules/iam"
+  ec2_iam_role_name   = var.ec2_iam_data.iam_role_name
+  ec2_iam_policy_name = var.ec2_iam_data.iam_policy_name
+}
+
 module "launch_template" {
   source               = "./modules/launch_template"
   launch_template_name = var.launch_template_name
@@ -30,6 +36,7 @@ module "launch_template" {
   key_name             = var.key_name
   security_group_id    = module.security.app_sg_id
   instance_type        = var.launch_template_instance_type
+  iam_role_name        = module.iam.ec2_iam_role_name
   user-data            = base64encode(file("./scripts/user-data.bash"))
 }
 

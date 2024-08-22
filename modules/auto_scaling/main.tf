@@ -11,6 +11,9 @@ resource "aws_autoscaling_group" "this" {
   health_check_type         = "ELB"
 
 
+
+
+
   force_delete = true
 
   vpc_zone_identifier = var.vpc_zone_identifier
@@ -31,6 +34,6 @@ resource "aws_autoscaling_group" "this" {
 
 resource "aws_autoscaling_attachment" "target_group_attachment" {
   autoscaling_group_name = aws_autoscaling_group.this.id
-  lb_target_group_arn = var.target_group_arn
+  lb_target_group_arn    = var.target_group_arn
 }
 

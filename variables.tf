@@ -77,3 +77,13 @@ variable "load_balancer_name" {
 variable "auto_scaling_group_name" {
   type = string
 }
+
+
+
+variable "ec2_iam_data" {
+  type = map(string)
+  default = {
+    iam_role_name   = "EC2CodeDeployIAMRole"
+    iam_policy_name = "EC2CodeDeployIAMPolicy"
+  }
+}
