@@ -2,6 +2,12 @@ locals {
   name = "${var.environment}-${var.launch_template_name}"
 }
 
+resource "aws_iam_instance_profile" "this" {
+  name = var.iam_instance_profile_name
+  role = var.iam_role_name
+}
+
+
 resource "aws_launch_template" "this" {
 
   name = local.name
@@ -17,7 +23,7 @@ resource "aws_launch_template" "this" {
   update_default_version = true
 
   iam_instance_profile {
-    name = var.iam_role_name
+    name = aws_iam_instance_profile.this.name
   }
 
   block_device_mappings {

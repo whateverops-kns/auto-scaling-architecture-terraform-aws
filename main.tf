@@ -12,6 +12,8 @@ module "vpc" {
   private_subnets    = var.private_subnets
   public_subnets     = var.public_subnets
   enable_nat_gateway = true
+  manage_default_network_acl = false
+
 }
 
 module "security" {
@@ -37,6 +39,7 @@ module "launch_template" {
   security_group_id    = module.security.app_sg_id
   instance_type        = var.launch_template_instance_type
   iam_role_name        = module.iam.ec2_iam_role_name
+  iam_instance_profile_name = var.iam_instance_profile_name
   user-data            = base64encode(file("./scripts/user-data.bash"))
 }
 

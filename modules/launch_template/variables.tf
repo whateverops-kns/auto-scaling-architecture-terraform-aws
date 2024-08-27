@@ -34,6 +34,11 @@ variable "user-data" {
 }
 
 variable "iam_role_name" {
-  type = string
+  type        = string
   description = "Name of the IAM Role"
+}
+
+variable "iam_instance_profile_name" {
+  type        = string
+  description = "IAM Instance Profile Name"
 }
